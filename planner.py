@@ -1,4 +1,6 @@
 # planner.py
+import os
+import subprocess
 import csv
 from datetime import datetime
 from fpdf import FPDF
@@ -19,3 +21,7 @@ filename = f"output/weekly_planner_{datetime.now().date()}.pdf"
 pdf.output(filename)
 print(f"✅ Planner generated: {filename}")
 
+os.chdir('/home/demo/planner')  # Change directory to where your Git repo is
+subprocess.run(['git', 'add', '.'])  # Add all changes (PDF, CSV, etc.)
+subprocess.run(['git', 'commit', '-m', 'Automated commit: New planner generated'])  # Commit changes
+subprocess.run(['git', 'push', 'origin', 'main'])  # Push to the remote repository
