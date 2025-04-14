@@ -11,6 +11,7 @@ pdf.set_font("Arial", size=12)
 pdf.cell(200, 10, txt="Weekly Planner", ln=1, align="C")
 pdf.ln(10)
 
+print("📂 Reading tasks from CSV...")
 with open("tasks.csv", newline='') as f:
     reader = csv.DictReader(f)
     for row in reader:
@@ -18,6 +19,7 @@ with open("tasks.csv", newline='') as f:
         pdf.cell(200, 10, txt=line, ln=1)
 
 filename = f"output/weekly_planner_{datetime.now().date()}.pdf"
+print("🧾 Generating PDF...")
 pdf.output(filename)
 print(f"✅ Planner generated: {filename}")
 # Log the generation time to a log file
