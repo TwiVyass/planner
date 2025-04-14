@@ -4,6 +4,7 @@ import subprocess
 import csv
 from datetime import datetime
 from fpdf import FPDF
+import sys
 
 pdf = FPDF()
 pdf.add_page()
@@ -11,6 +12,10 @@ pdf.set_font("Arial", size=12)
 pdf.cell(200, 10, txt="Weekly Planner", ln=1, align="C")
 pdf.ln(10)
 
+# Check if the CSV file exists
+if not os.path.exists("tasks.csv"):
+    print(" Error: tasks.csv not found. Please create the file with your tasks.")
+    sys.exit(1)
 print("📂 Reading tasks from CSV...")
 with open("tasks.csv", newline='') as f:
     reader = csv.DictReader(f)
