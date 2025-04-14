@@ -20,8 +20,11 @@ with open("tasks.csv", newline='') as f:
 filename = f"output/weekly_planner_{datetime.now().date()}.pdf"
 pdf.output(filename)
 print(f"✅ Planner generated: {filename}")
+# Log the generation time to a log file
+with open("planner_log.txt", "a") as log_file:
+    log_file.write(f"{datetime.now()}: Generated planner at {filename}\n")
 
-os.chdir('/home/demo/planner')  # Changing directory to where your Git repo is
+os.chdir('/home/suhani/planner')  # Changing directory to where your Git repo is
 subprocess.run(['git', 'add', '.'])  # Adding all changes (PDF, CSV, etc.)
 subprocess.run(['git', 'commit', '-m', 'Automated commit: New planner generated'])  # Committing changes
 subprocess.run(['git', 'push', 'origin', 'main'])  # Pushing to the remote repository
