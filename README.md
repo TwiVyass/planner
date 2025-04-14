@@ -32,11 +32,12 @@ planner/
 
 ### 1️⃣ Clone the Repository
 
-```bash
+bash
 git clone https://github.com/suhanasuffer/planner.git
 cd planner
+---
 
-### 2️⃣ Set Up the Virtual Environment
+2️⃣ Set Up the Virtual Environment
 sudo apt update
 sudo apt install python3-venv wkhtmltopdf
 
